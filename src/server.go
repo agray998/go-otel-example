@@ -29,7 +29,7 @@ func main() {
 		fmt.Printf("Error adding %v to the tracer engine: %v", "applicationName", err)
 	}
 
-	collectorAddr := "127.0.0.1:1111"
+	collectorAddr := "otel-collector:1111"
 	traceExporter, err := otlptracegrpc.New(ctx,
 		otlptracegrpc.WithInsecure(),
 		otlptracegrpc.WithEndpoint(collectorAddr),

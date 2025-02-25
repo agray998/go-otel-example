@@ -27,7 +27,7 @@ func main() {
 		fmt.Printf("Error adding %v to the tracer engine: %v", "applicationName", err)
 	}
 
-	collectorAddr := "127.0.0.1:1111"
+	collectorAddr := "otel-collector:1111"
 	traceExporter, err := otlptracegrpc.New(ctx,
 		otlptracegrpc.WithInsecure(),
 		otlptracegrpc.WithEndpoint(collectorAddr),
@@ -51,7 +51,7 @@ func main() {
 		Transport: otelhttp.NewTransport(
 			http.DefaultTransport),
 	}
-	req, err := http.NewRequestWithContext(ctx, "GET", "http://localhost:9000", nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", "http://go-server:9000", nil)
 	if err != nil {
 		panic(err)
 	}
