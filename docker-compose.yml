@@ -15,5 +15,5 @@ services:
       published: 1111
     volumes:
     - type: bind
-      source: ./instrumentation-collector-config.yaml
+      source: ./otel-config/instrumentation-collector-config.yml
       target: /etc/otel/otel-local-config.yaml
