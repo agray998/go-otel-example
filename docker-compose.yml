@@ -3,34 +3,31 @@ version: "3.8"
 services:
   go-server:
     image: golang:1.21-alpine
-    name: server
     environment:
       GOPATH: /tmp
     working_dir: /app
     networks:
     - demo
     volumes:
-    - type: volume
+    - type: bind
       source: ./src/
       target: /app
     command: go run server.go
   
   go-client:
     image: golang:1.21-alpine
-    name: client
     environment:
       GOPATH: /tmp
     working_dir: /app
     networks:
     - demo
     volumes:
-    - type: volume
+    - type: bind
       source: ./src/
       target: /app
     command: go run client.go
   
   otel-collector:
-    name: otelcol
     image: otel/opentelemetry-collector-contrib:0.40.0
     command:
     - --config
