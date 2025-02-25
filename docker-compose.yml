@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  go-server:
+    ...
+  
+  go-client:
+    ...
+  
+  otel-collector:
+    name: otelcol
+    image: otel/opentelemetry-collector-contrib:0.40.0
+    ports:
+    - target: 1111
+      published: 1111
+    volumes:
+    - type: bind
+      source: ./instrumentation-collector-config.yaml
+      target: /etc/otel/otel-local-config.yaml
